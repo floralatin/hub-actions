@@ -17,7 +17,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
     - name: baseline-test
-      uses: echoiitime-inc/baseline-test@master
+      uses: echoiitime-inc/baseline-test@v1.0
       id: baseline-test
       with: 
         python-version: '3.7'
@@ -27,7 +27,7 @@ runs:
       shell: bash
     - name: docker-source-combine
       id: docker-source-combine
-      uses: echoiitime-inc/docker-source-combine@master
+      uses: echoiitime-inc/docker-source-combine@v1.0
       with: 
         python-version: '3.7'
         node-version: '16.x'
