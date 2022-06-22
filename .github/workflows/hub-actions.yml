@@ -15,9 +15,14 @@ on:
         required: false
         default:  ''
         type: string
+    secrets:
+      token: ${{ secrets.ACCESS_TOKEN }}
 jobs:
   integrated-test:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.result }}
+      output2: ${{ steps.docker-source-combine.outputs.result }}
     steps:
     - uses: actions/checkout@v3
     - name: baseline-test
@@ -26,9 +31,6 @@ jobs:
       with: 
         python-version: '3.7'
         github-token: ${{ inputs.github-token }}
-    - name: get baseline-test result 
-      run: echo ${{ steps.baseline-test.outputs.result }}
-      shell: bash
     - name: docker-source-combine
       id: docker-source-combine
       uses: floralatin/hub-actions/.github/actions/docker-source-combine@master
@@ -39,7 +41,4 @@ jobs:
         node_env: 'testing'
         jina_hubble_registry: 'http://localhost:3000'
         github-token: ${{ inputs.github-token }}
-    - name: get docker-source-combine result 
-      run: echo ${{ steps.docker-source-combine.outputs.result }}
-      shell: bash
         
