@@ -1,8 +1,5 @@
 name: Integrated test
 on:
-  schedule:
-    # Every day 11:40 Shanghai time
-    - cron:  '40 3 * * *'
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -15,6 +12,9 @@ on:
         required: false
         default:  ''
         type: string
+    secrets:
+      token:
+        required: true
     outputs:
       output1:
         description: "The first output string"
