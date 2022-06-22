@@ -22,7 +22,7 @@ runs:
       id: baseline-test
       with: 
         python-version: '3.7'
-        github-token: ${{ secrets.ACCESS_TOKEN }}
+        github-token: ${{ inputs.github-token }}
     - name: get baseline-test result 
       run: echo ${{ steps.baseline-test.outputs.result }}
       shell: bash
@@ -36,7 +36,7 @@ runs:
         case-path: 'success/case1'
         node_env: 'testing'
         jina_hubble_registry: 'jina_hubble_registry'
-        github-token: ${{ secrets.ACCESS_TOKEN }}
+        github-token: ${{ inputs.github-token }}
     - name: get docker-source-combine result 
       run: echo ${{ steps.docker-source-combine.outputs.result }}
       shell: bash
