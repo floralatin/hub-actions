@@ -38,7 +38,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         with:
           repository: jina-ai/hubble
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ inputs.github-token }}
           ref: refs/heads/master
           path: hubble
           lfs: true
@@ -111,7 +111,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         with:
           repository: jina-ai/jina
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ inputs.github-token }}
           ref: refs/heads/master
           path: jina
 
