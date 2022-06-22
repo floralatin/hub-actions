@@ -17,17 +17,19 @@ runs:
   steps:
     - uses: actions/checkout@v3
     - name: baseline-test
-      uses: floralatin/baseline-test@master
+      # uses: floralatin/baseline-test@master
+      uses: ./.github/actions/baseline-test
       id: baseline-test
       with: 
         python-version: '3.7'
-        github-token: ${{ secrets.ACCESS_TOKEN  }}
+        github-token: ${{ secrets.ACCESS_TOKEN }}
     - name: get baseline-test result 
       run: echo ${{ steps.baseline-test.outputs.result }}
       shell: bash
     - name: docker-source-combine
       id: docker-source-combine
-      uses: floralatin/docker-source-combine@master
+      # uses: floralatin/docker-source-combine@master
+      uses: ./.github/actions/docker-source-combine
       with: 
         python-version: '3.7'
         node-version: '16.x'
