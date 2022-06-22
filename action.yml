@@ -18,7 +18,7 @@ runs:
     - uses: actions/checkout@v3
     - name: baseline-test
       # uses: floralatin/baseline-test@master
-      uses: ./.github/actions/baseline-test
+      uses: floralatin/hub-actions/.github/actions/baseline-test@master
       id: baseline-test
       with: 
         python-version: '3.7'
@@ -29,7 +29,7 @@ runs:
     - name: docker-source-combine
       id: docker-source-combine
       # uses: floralatin/docker-source-combine@master
-      uses: ./.github/actions/docker-source-combine
+      uses: floralatin/hub-actions/.github/actions/docker-source-combine@master
       with: 
         python-version: '3.7'
         node-version: '16.x'
