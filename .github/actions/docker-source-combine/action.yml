@@ -34,7 +34,7 @@ runs:
       - run: docker version
         shell: bash
 
-      - run: python ${{ github.action_path }}/docker-source-combine.py
+      - run: python docker-source-combine.py
         shell: bash
 
       - name: finally
