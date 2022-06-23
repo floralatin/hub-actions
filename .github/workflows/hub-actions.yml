@@ -35,7 +35,7 @@ jobs:
         id: baseline-test
         with: 
           python-version: '3.7'
-          github-token: ${{ inputs.github-token }}
+          github-token: ${{ secrets.ACCESS_TOKEN }}
 
   docker-source-combine:
     runs-on: ubuntu-latest
@@ -51,5 +51,5 @@ jobs:
         case-path: 'success/case1'
         node_env: 'testing'
         jina_hubble_registry: 'http://localhost:3000'
-        github-token: ${{ inputs.github-token }}
+        github-token: ${{ secrets.ACCESS_TOKEN }}
         
