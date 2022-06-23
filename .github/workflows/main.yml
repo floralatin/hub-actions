@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: sanity_check
         id: sanity_heck
-        uses: jina-ai/hub-integration/.github/actions/sanity-check@master
+        uses: floralatin/hub/.github/actions/sanity-check@master
         with:
           python-version: '3.7'
 
@@ -62,7 +62,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: baseline-test
-        uses: jina-ai/hub-integration/.github/actions/baseline-test@master
+        uses: floralatin/hub/.github/actions/baseline-test@master
         id: baseline-test
         with: 
           python_version: ${{ matrix.python_version }}
@@ -80,6 +80,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: docker_source_combine
       id: docker_source_combine
-      uses: jina-ai/hub-integration/.github/actions/docker-source-combine@master
+      uses: floralatin/hub/.github/actions/docker-source-combine@master
       with:
         python_version: '3.7'
