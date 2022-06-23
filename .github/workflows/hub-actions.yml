@@ -21,6 +21,7 @@ on:
 jobs:
   baseline-test:
     runs-on: ubuntu-latest
+    environment: ACCESS_TOKEN
     outputs:
       result: ${{ steps.baseline-test.outputs.result }}
     steps:
