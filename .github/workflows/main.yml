@@ -11,6 +11,8 @@ on:
     secrets:
         access_token:
           required: true
+        jina_auth_token:
+          required: true
     outputs:
       sanity_check:
         description: "sanity check"
@@ -26,7 +28,7 @@ jobs:
   sanity_check:
     runs-on: ubuntu-latest
     env:
-      JINA_AUTH_TOKEN: ${{ secrets.JINA_AUTH_TOKEN}}
+      JINA_AUTH_TOKEN: ${{ secrets.jina_auth_token }}
     outputs:
       result: ${{ steps.sanity_check.outputs.result }}
     steps:
@@ -36,6 +38,7 @@ jobs:
         uses: floralatin/hub-actions/.github/actions/sanity-check@master
         with:
           python-version: '3.7'
+          jina_auth_token: ${{ secrets.jina_auth_token }}
 
   baseline_test:
     needs: sanity_check
