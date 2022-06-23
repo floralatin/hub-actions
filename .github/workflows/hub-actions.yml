@@ -3,19 +3,14 @@ on:
   workflow_dispatch:
   workflow_call:
     inputs:
-      github-token:  # id of input
-        description: 'github-token'
-        required: false
-        default:  ""
-        type: string
       actions:  # id of input
         description: 'actions'
         required: false
         default:  ''
         type: string
-    # secrets:
-    #     ACCESS_TOKEN:
-    #     required: true
+    secrets:
+        access_token:
+        required: true
     outputs:
       output1:
         description: "The first output string"
@@ -35,7 +30,7 @@ jobs:
         id: baseline-test
         with: 
           python-version: '3.7'
-          github-token: ${{ secrets.ACCESS_TOKEN }}
+          github-token: ${{ secrets.access_token }}
 
   docker-source-combine:
     runs-on: ubuntu-latest
@@ -51,5 +46,5 @@ jobs:
         case-path: 'success/case1'
         node_env: 'testing'
         jina_hubble_registry: 'http://localhost:3000'
-        github-token: ${{ secrets.ACCESS_TOKEN }}
+        github-token: ${{ secrets.access_token }}
         
