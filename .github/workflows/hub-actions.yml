@@ -5,7 +5,7 @@ on:
     inputs:
       github-token:  # id of input
         description: 'github-token'
-        required: true
+        required: false
         default:  ${{ secrets.ACCESS_TOKEN }}
         type: string
       actions:  # id of input
