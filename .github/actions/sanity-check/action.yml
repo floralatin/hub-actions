@@ -38,7 +38,9 @@ runs:
         JINA_AUTH_TOKEN: ${{ inputs.jina_auth_token }}
       run: |
           echo "github.path ${{ github.path }}"
-          echo "github.path ${{ github.action_path }}"
+          echo "github.action_path ${{ github.action_path }}"
+          echo "GITHUB_WORKSPACE $GITHUB_WORKSPACE"
+          
           python ./sanity-checks/check-docarray.py
           jina hub push --private --force-update SanityCheck --secret sanity@Check ./sanity-checks/executors/SanityCheck
           python ./sanity-checks/check-executor-pull.py
