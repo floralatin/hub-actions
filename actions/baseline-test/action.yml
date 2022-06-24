@@ -150,6 +150,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         with:
           repository: jina-ai/executor-cases
+          token: ${{ inputs.jin_dev_bot }}
           ref: refs/heads/main
           path: ${{ inputs.action_cases_path }}
 
