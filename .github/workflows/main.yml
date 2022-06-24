@@ -51,13 +51,13 @@ jobs:
         case_path:
           - success/case1
           - success/case2
-          - success/case3
-          # - success/case4
-          - success/case5
-          - success/case6
-          - success/case7
-          - success/case8
-          - success/case9
+          # - success/case3
+          # # - success/case4
+          # - success/case5
+          # - success/case6
+          # - success/case7
+          # - success/case8
+          # - success/case9
     env:
       NODE_ENV: testing
       JINA_HUBBLE_REGISTRY: http://localhost:3000
