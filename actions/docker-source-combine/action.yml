@@ -1,5 +1,5 @@
 name: 'docker-source-combine'
-description: 'Greet someone and record the time'
+description: 'docker source test'
 inputs:
   python_version: 
     description: python_version

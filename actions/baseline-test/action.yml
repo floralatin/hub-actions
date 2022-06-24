@@ -13,6 +13,9 @@ inputs:
     description: 'case_path'
     required: true
     default:  'success/case1'
+  jin_dev_bot: 
+    description: 'jin_dev_bot'
+    required: true
   node_env:
     description: 'node_env'
     required: false
@@ -43,7 +46,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         with:
           repository: jina-ai/hubble
-          token: ${{ secrets.JINA_DEV_BOT }}
+          token: ${{ inputs.jin_dev_bot }}
           ref: ${{ inputs.hubble_ref }}
           path: hubble
           lfs: true
@@ -116,7 +119,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         with:
           repository: jina-ai/jina
-          token: ${{ secrets.JINA_DEV_BOT }}
+          token: ${{ inputs.jin_dev_bot }}
           ref: ${{ inputs.jina_ref }}
           path: jina
 
