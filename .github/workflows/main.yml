@@ -79,7 +79,6 @@ jobs:
 
   docker_source_combine:
     if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'docker_source_combine') }}
-    needs: sanity_check
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.docker_source_combine.outputs.result }}
