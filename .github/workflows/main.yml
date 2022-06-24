@@ -28,6 +28,7 @@ on:
 jobs:
 
   sanity_check:
+    if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'sanity_check') }}
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.sanity_check.outputs.result }}
@@ -41,7 +42,7 @@ jobs:
           jina_auth_token: ${{ secrets.jina_auth_token }}
 
   baseline_test:
-    needs: sanity_check
+    if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'baseline_test') }}
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.baseline-test.outputs.result }}
@@ -77,6 +78,7 @@ jobs:
           slack_nightly_tests_webhook: ${{ secrets.slack_nightly_tests_webhook}}
 
   docker_source_combine:
+    if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'docker_source_combine') }}
     needs: sanity_check
     runs-on: ubuntu-latest
     outputs:
