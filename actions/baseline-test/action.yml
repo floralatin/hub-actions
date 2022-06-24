@@ -32,6 +32,10 @@ inputs:
     description: 'jina_hubble_registry'
     required: false
     default:  'http://localhost:3000'
+  action_hubble_path: 
+    description: 'default path avoid conflict with the original repo'
+    required: false
+    default:  '__actions__hubble__'
 outputs:
   result:
     description: 'result'
@@ -48,7 +52,7 @@ runs:
           repository: jina-ai/hubble
           token: ${{ inputs.jin_dev_bot }}
           ref: ${{ inputs.hubble_ref }}
-          path: hubble
+          path: ${{ inputs.action_hubble_path }}
           lfs: true
 
       - name: mk logs folder
@@ -64,7 +68,7 @@ runs:
           sudo chown -R $USER:$USER /tmp/jina-uploaded /tmp/jina-hubble-temp
           docker-compose up -d
         shell: bash
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         
       - name: setup knative
         env:
@@ -86,19 +90,19 @@ runs:
           node_version: ${{ inputs.node_version }}
 
       - run: yarn install --frozen-lockfile
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         shell: bash
       - run: npm run build --if-present
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         shell: bash
       - run: npm run start:prod > ../logs/server.log &
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
@@ -186,7 +190,7 @@ runs:
       - name: get docker compose logs
         if: always()
         run: docker-compose logs > ../logs/docker-compose.log
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
@@ -208,7 +212,7 @@ runs:
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
-        working-directory: hubble
+        working-directory: ${{ inputs.action_hubble_path }}
         shell: bash 
 
       - name: finally
