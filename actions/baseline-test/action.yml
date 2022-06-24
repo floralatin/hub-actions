@@ -206,7 +206,7 @@ runs:
         shell: bash
 
       - name: Archive server log results
-        if: always()
+        if:  failure()
         uses: actions/upload-artifact@v2
         env:
             NODE_ENV: ${{ inputs.node_env }}
