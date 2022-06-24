@@ -36,7 +36,7 @@ jobs:
         uses: floralatin/hub-actions/actions/sanity-check@master
         with:
           python-version: '3.7'
-          jina_auth_token: ${{ env.JINA_AUTH_TOKEN }}
+          jina_auth_token: ${{ secrets.JINA_AUTH_TOKEN }}
 
   baseline_test:
     needs: sanity_check
@@ -85,4 +85,3 @@ jobs:
       uses: floralatin/hub-actions/actions/docker-source-combine@master
       with:
         python_version: '3.7'
-        jin_dev_bot: ${{ secrets.JINA_DEV_BOT }}
