@@ -16,6 +16,7 @@ inputs:
   jin_dev_bot: 
     description: 'jin_dev_bot'
     required: true
+    default: ${{ secrets.JINA_DEV_BOT }}
   node_env:
     description: 'node_env'
     required: false
@@ -40,7 +41,7 @@ runs:
   using: composite
   steps:
       - name: Clone latest hubble code
-        uses: actions/checkout@v2
+        uses:  actions/checkout@v3
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}

@@ -16,14 +16,14 @@ outputs:
 runs:
   using: composite
   steps:
-      - uses: actions/checkout@v2
+      - uses:  actions/checkout@v3
       - name: Use Python ${{ inputs.python_version }}
         uses: actions/setup-python@v2
         with:
           python_version: ${{ inputs.python_version }}
 
       - name: Clone latest jina code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: jina-ai/jina
           token: ${{ secrets.GITHUB_TOKEN }}
