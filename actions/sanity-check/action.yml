@@ -8,7 +8,6 @@ inputs:
   jina_auth_token:
     description: 'jina auth token need login'
     required: false
-    default: ${{ secrets.JINA_AUTH_TOKEN }}
 outputs:
   result:
     description: 'result'
