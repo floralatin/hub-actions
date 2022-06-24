@@ -35,7 +35,15 @@ inputs:
   action_hubble_path: 
     description: 'default path avoid conflict with the original repo'
     required: false
-    default:  '__actions__hubble__'
+    default:  'actions__hubble'
+  action_jina_path: 
+    description: 'default path avoid conflict with the original repo'
+    required: false
+    default:  'actions__jina'
+  action_cases_path:
+    description: 'default path avoid conflict with the original repo'
+    required: false
+    default:  'actions__cases'
 outputs:
   result:
     description: 'result'
@@ -125,10 +133,10 @@ runs:
           repository: jina-ai/jina
           token: ${{ inputs.jin_dev_bot }}
           ref: ${{ inputs.jina_ref }}
-          path: jina
+          path: ${{ inputs.action_jina_path }}
 
       - name: pip install jina
-        working-directory: jina
+        working-directory: ${{ inputs.action_jina_path }}
         env:
             NODE_ENV: ${{ inputs.node_env }}
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
@@ -143,7 +151,7 @@ runs:
         with:
           repository: jina-ai/executor-cases
           ref: refs/heads/main
-          path: cases
+          path: ${{ inputs.action_cases_path }}
 
       - name: Check node server
         env:
@@ -169,7 +177,7 @@ runs:
             JINA_HUBBLE_REGISTRY: ${{ inputs.jina_hubble_registry }}
         id: do_test
         run: jina hub push ${{ inputs.case_path }} | tee ../logs/build.log
-        working-directory: cases
+        working-directory: ${{ inputs.action_cases_path }}
         shell: bash
         
       - name: extract id
