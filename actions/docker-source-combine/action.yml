@@ -45,7 +45,7 @@ runs:
       - run: docker version
         shell: bash
 
-      - run: python ${{ github.action_path }}/executor.py
+      - run: python ${{ github.action_path }}/src/executor.py
         shell: bash
 
       - name: finally
