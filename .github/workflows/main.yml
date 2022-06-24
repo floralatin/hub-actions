@@ -85,4 +85,4 @@ jobs:
       uses: floralatin/hub-actions/actions/docker-source-combine@master
       with:
         python_version: '3.7'
-        github_token: ${{ secrets.jin_dev_bot }}
+        jin_dev_bot: ${{ secrets.jin_dev_bot }}
