@@ -16,7 +16,6 @@ inputs:
   jin_dev_bot: 
     description: 'jin_dev_bot'
     required: true
-    default: ${{ secrets.JINA_DEV_BOT }}
   node_env:
     description: 'node_env'
     required: false
