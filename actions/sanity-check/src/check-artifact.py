@@ -4,6 +4,7 @@ import os
 
 _API_HOST = 'https://api.hubble.jina.ai'
 _AUTH_TOKEN = os.environ['JINA_AUTH_TOKEN']
+_GITHUB_ACTION_PATH = os.environ['GITHUB_ACTION_PATH']
 
 
 def send_request(url: str, data: dict, **kwargs):
@@ -23,7 +24,7 @@ def upload(id: str = None):
         payload['id'] = id
 
     files=[
-        ('file',('manifest.yml',open('./sanity-checks/executors/SanityCheck/manifest.yml','rb'),'application/octet-stream'))
+        ('file',('manifest.yml',open('{_GITHUB_ACTION_PATH}/src/executors/SanityCheck/manifest.yml','rb'),'application/octet-stream'))
     ]
 
     url = f'{_API_HOST}/v2/rpc/artifact.upload'
