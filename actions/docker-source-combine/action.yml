@@ -9,6 +9,9 @@ inputs:
     description: jina_ref
     default: 'refs/heads/master'
     required: false
+  github_action: 
+    description: use token pull jina-ai/jina
+    required: true
 outputs:
   result:
     description: 'result'
@@ -26,7 +29,7 @@ runs:
         uses: actions/checkout@v3
         with:
           repository: jina-ai/jina
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ inputs.github_action }}
           ref: ${{ inputs.jina_ref }}
           path: jina
       
