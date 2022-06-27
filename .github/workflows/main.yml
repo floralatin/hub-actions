@@ -8,11 +8,12 @@ on:
         required: false
         default:  'all'
         type: string
-    secrets: 
-        jin_dev_bot: 
-          required: true
-        jina_auth_token:
-          required: true
+      jin_dev_bot: 
+        required: true
+        type: string
+      jina_auth_token:
+        required: true
+        type: string
     outputs:
       sanity_check:
         description: "sanity check"
@@ -37,7 +38,7 @@ jobs:
         uses: floralatin/hub-actions/actions/sanity-check@master
         with:
           python-version: '3.7'
-          jina_auth_token: ${{ secrets.jina_auth_token }}
+          jina_auth_token: ${{ inputs.jina_auth_token }}
 
   baseline_test:
     if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'baseline_test') }}
@@ -72,7 +73,7 @@ jobs:
           case_path: ${{ matrix.case_path }}
           node_env: 'testing'
           jina_hubble_registry: 'http://localhost:3000'
-          jin_dev_bot: ${{ secrets.jin_dev_bot }}
+          jin_dev_bot: ${{ inputs.jin_dev_bot }}
 
   docker_source_combine:
     if: ${{ inputs.actions == 'all' ||  contains(inputs.actions, 'docker_source_combine') }}
@@ -86,4 +87,4 @@ jobs:
       uses: floralatin/hub-actions/actions/docker-source-combine@master
       with:
         python_version: '3.7'
-        jin_dev_bot: ${{ secrets.jin_dev_bot }}
+        jin_dev_bot: ${{ inputs.jin_dev_bot }}
