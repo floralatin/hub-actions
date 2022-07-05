@@ -32,11 +32,10 @@
 on: [push]
 jobs:
   hub-actions:
-    uses: floralatin/hub-actions/.github/workflows/main.yml@main
+    uses: floralatin/hub-actions/.github/workflows/main.yml@master
     with:
       # options includes [all, baseline_test, sanity_check]
       actions: 'all' 
-   
     secrets: 
       # github personal auth token and use it to pull hubble repo and jina repo
       jina_dev_bot: ${{ secrets.JINA_DEV_BOT }}

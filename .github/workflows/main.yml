@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: sanity_check
         id: sanity_heck
-        uses: floralatin/hub-actions/actions/sanity-check@main
+        uses: floralatin/hub-actions/actions/sanity-check@master
         with:
           jina_auth_token: ${{ secrets.jina_auth_token }}
           jina_dev_bot: ${{ secrets.jina_dev_bot }}
@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: baseline_test
-        uses: floralatin/hub-actions/actions/baseline-test@main
+        uses: floralatin/hub-actions/actions/baseline-test@master
         id: baseline_test
         with: 
           python_version: ${{ matrix.python_version }}
