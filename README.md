@@ -32,7 +32,7 @@
 on: [push]
 jobs:
   hub-actions:
-    uses: jina-ai/hub-integration/.github/workflows/main.yml@main
+    uses: floralatin/hub-actions/.github/workflows/main.yml@main
     with:
       # options includes [all, baseline_test, sanity_check]
       actions: 'all' 
