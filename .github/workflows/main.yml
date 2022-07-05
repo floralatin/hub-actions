@@ -45,8 +45,10 @@ jobs:
       result: ${{ steps.baseline_test.outputs.result }}
     strategy:
       matrix:
-        node_version: [16.x]
-        python_version: ['3.7']
+        node_version: 
+          - '16.x'
+        python_version: 
+          - '3.7'
         case_path:
           - success/case1
           - success/case2
